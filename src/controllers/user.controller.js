@@ -7,6 +7,13 @@ const getByEmail = async (req, res) => {
   res.status(httpMapper(status)).json(data);
 };
 
+const createUser = async (req, res) => {
+  const { displayName, email, password } = req.body;
+  const { status, data } = await userService.createUser({ displayName, email, password });
+  res.status(httpMapper(status)).json(data);
+};
+
 module.exports = {
   getByEmail,
+  createUser,
 };
