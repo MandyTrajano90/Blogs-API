@@ -15,7 +15,7 @@ const getByEmail = async (loginCredentials) => {
   }
 
   const { email } = user;
-  const token = auth.generateToken({ email });
+  const token = auth.newToken({ email });
   return { status: 'SUCCESSFUL', data: { token } };
 };
 
@@ -30,12 +30,21 @@ const createUser = async (newUser) => {
 
   await User.create(newUser);
   const { displayName, email } = newUser;
-  const token = auth.generateToken({ displayName, email });
+  const token = auth.newToken({ displayName, email });
 
   return { status: 'CREATED', data: { token } };
+};
+
+const getAll = async () => {
+  const users = await User.findAll(
+    { attributes: { exclude: ['password'] } },
+  );
+
+  return { status: 'SUCCESSFUL', data: users };
 };
 
 module.exports = {
   getByEmail,
   createUser,
+  getAll,
 };

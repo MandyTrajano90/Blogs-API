@@ -13,7 +13,13 @@ const createUser = async (req, res) => {
   res.status(httpMapper(status)).json(data);
 };
 
+const getAll = async (_req, res) => {
+  const { status, data } = await userService.getAll();
+  res.status(httpMapper(status)).json(data);
+};
+
 module.exports = {
   getByEmail,
   createUser,
+  getAll,
 };
