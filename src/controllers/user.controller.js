@@ -18,8 +18,15 @@ const getAll = async (_req, res) => {
   res.status(httpMapper(status)).json(data);
 };
 
+const getById = async (req, res) => {
+  const { id } = req.params;
+  const { status, data } = await userService.getById(id);
+  res.status(httpMapper(status)).json(data);
+};
+
 module.exports = {
   getByEmail,
   createUser,
   getAll,
+  getById,
 };
