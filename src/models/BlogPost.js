@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     published: DataTypes.DATE,
     updated: DataTypes.DATE,
   }, {
-    timestamps: false,
+    createdAt: "published",
+    updatedAt: "updated",
+    timestamps: true,
     underscored: true
   })
 
@@ -15,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     BlogPosts.belongsToMany(Category, {
       through: PostCategory,
       foreignKey: "postId",
-      as: "postCategories",
+      as: "categories",
       otherKey: "categoryId",
     });
 

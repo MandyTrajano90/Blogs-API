@@ -11,24 +11,24 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
         field: 'post_id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
         references: {
           model: 'blog_posts',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       categoryId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
         field: 'category_id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
         references: {
           model: 'categories',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
 
     });
