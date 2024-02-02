@@ -1,5 +1,5 @@
 const httpMapper = require('../utils/httpMapper');
-const userService = require('../services/user.service');
+const { userService } = require('../services');
 
 const getByEmail = async (req, res) => {
   const { email, password } = req.body;
