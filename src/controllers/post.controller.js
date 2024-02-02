@@ -18,8 +18,16 @@ const getPostById = async (req, res) => {
   res.status(httpMapper(status)).json(data);
 };
 
+const updatePost = async (req, res) => {
+  const { email } = req.user.decoded;
+  const { id } = req.params;
+  const { title, content } = req.body;
+  const { status, data } = await postService.updatedPost({ title, content }, id, email);
+  res.status(httpMapper(status)).json(data);
+};
 module.exports = {
   getAllPosts,
   createPost,
   getPostById,
+  updatePost,
 };
