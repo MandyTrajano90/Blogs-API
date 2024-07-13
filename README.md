@@ -24,6 +24,10 @@ Neste projeto, aprendi a:
   <summary><strong>👁️ Dê uma olhada no código</strong></summary>
 
   
+
+https://github.com/user-attachments/assets/be86a885-9171-4e50-8abe-43521c5569a1
+
+
 </details>
 
 <!-- Olá, Tryber!
