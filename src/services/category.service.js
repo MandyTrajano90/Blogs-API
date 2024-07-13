@@ -26,7 +26,7 @@ const getAll = async () => {
 const getCategoryById = async (id) => {
   const category = await Category.findByPk(id);
 
-  if (!category) return { status: 'NOT_FOUND', data: { message: 'Category does not exist' } };
+  // if (!category) return { status: 'NOT_FOUND', data: { message: 'Category does not exist' } };
 
   return { status: 'SUCCESSFUL', data: category };
 };

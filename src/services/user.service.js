@@ -14,8 +14,8 @@ const getByEmail = async (loginCredentials) => {
     return { status: 'BAD_REQUEST', data: { message: 'Invalid fields' } };
   }
 
-  const { email } = user;
-  const token = auth.newToken({ email });
+  const { email, id } = user;
+  const token = auth.newToken({ email, userId: id });
   return { status: 'SUCCESSFUL', data: { token } };
 };
 

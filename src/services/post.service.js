@@ -1,4 +1,4 @@
-const { BlogPost, User, Category } = require('../models');
+const { BlogPost, User, Category, PostCategory } = require('../models');
 const { updatePost } = require('../middlewares/validationInputs');
 
 const getAllPosts = async () => {
@@ -43,9 +43,18 @@ const updatedPost = async (postData, id, email) => {
   const modifiedPost = await getById(id);
   return { status: 'SUCCESSFUL', data: modifiedPost.data };
 };
+const createPost = async (title, content, categoryIds, userId) => {
+  const newPost = await BlogPost.create({ title, content, userId });
+
+  await Promise.all(categoryIds.map(async (categoryId) => {
+    await PostCategory.create({ postId: newPost.id, categoryId });
+  }));
+  return { status: 'CREATED', data: newPost };
+};
 
 module.exports = {
   getAllPosts,
   getById,
   updatedPost,
+  createPost,
 };
